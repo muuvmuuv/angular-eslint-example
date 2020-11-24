@@ -1,0 +1,60 @@
+{
+  "plugins": [
+    "import"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:prettier/recommended"
+  ],
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2020
+  },
+  "ignorePatterns": [
+    "abstracts",
+    "coverage",
+    "dist",
+    "results"
+  ],
+  "rules": {
+    "no-case-declarations": "off",
+    // -------> import/order
+    "sort-imports": [
+      // ignore everything that is handled by `import/order` plugin but enable member sort
+      "error",
+      {
+        "ignoreCase": true,
+        "ignoreDeclarationSort": true,
+        "ignoreMemberSort": false,
+        "allowSeparatedGroups": true
+      }
+    ],
+    "import/order": [
+      "error",
+      {
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        "groups": [
+          "builtin",
+          "external",
+          [
+            "internal",
+            "parent",
+            "sibling"
+          ],
+          "index",
+          "object"
+        ]
+      }
+    ]
+  }
+}
